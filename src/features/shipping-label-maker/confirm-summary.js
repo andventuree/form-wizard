@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { StepNavBtns } from "../../core/components";
+import { StepNavBtns, AddressBlock } from "../../core/components";
 import { shippingCost, shippingRate } from "../../utils";
 
 export default class ConfirmSummary extends Component {
@@ -21,56 +21,36 @@ export default class ConfirmSummary extends Component {
   }
 
   render() {
-    let { title, onAction, wizardContext } = this.props;
+    let { title, onAction, wizardContext, currentStep } = this.props;
     return (
       <div>
         <div>
-          <h3>{title}</h3>
+          <div>{`Step ${currentStep + 1}: ${title}`}</div>
         </div>
-        <div>
-          <div>
-            Sender:
-            <div>
-              Name: <span>{wizardContext.to.name}</span>
-            </div>
-            <div>
-              Street: <span>{wizardContext.to.street}</span>
-            </div>
-            <div>
-              City: <span>{wizardContext.to.city}</span>
-            </div>
-            <div>
-              State: <span>{wizardContext.to.state}</span>
-            </div>
-            <div>
-              Zip: <span>{wizardContext.to.zip}</span>
-            </div>
+        <div className="row">
+          <AddressBlock details={wizardContext.from} direction="Send From" />
+          <AddressBlock details={wizardContext.to} direction="Deliver To" />
+        </div>
+        <div className="row">
+          <div className="col-md-8 col-sm-0" />
+          <div className="col-md-2 col-sm-9">Weight: </div>
+          <div className="col-md-2 col-sm-3">
+            {wizardContext.weight}
+            lbs
           </div>
-          <div>
-            Receiver:
-            <div>
-              Name: <span>{wizardContext.from.name}</span>
-            </div>
-            <div>
-              Street: <span>{wizardContext.from.street}</span>
-            </div>
-            <div>
-              City: <span>{wizardContext.from.city}</span>
-            </div>
-            <div>
-              State: <span>{wizardContext.from.state}</span>
-            </div>
-            <div>
-              Zip: <span>{wizardContext.from.zip}</span>
-            </div>
-          </div>
-          <div>Weight: {wizardContext.weight} lbs</div>
-          <div>
-            Shipping Option:{" "}
+        </div>
+        <div className="row">
+          <div className="col-md-8 col-sm-0" />
+          <div className="col-md-2 col-sm-9">Method: </div>
+          <div className="col-md-2 col-sm-3">
             {wizardContext.shippingOption === 1 ? "Ground" : "Priority"}
           </div>
         </div>
-        <div>${this.state.shippingCost}</div>
+        <div className="row">
+          <div className="col-md-8 col-sm-0" />
+          <div className="col-md-2 col-sm-9">Cost:</div>
+          <div className="col-md-2 col-sm-3">${this.state.shippingCost}</div>
+        </div>
         <StepNavBtns onAction={onAction} currentStep={4} />
       </div>
     );

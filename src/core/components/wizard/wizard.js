@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import {
   AddressForm,
   WeightForm,
-  ShipOption,
+  ShipOptionForm,
   ConfirmSummary
 } from "../../../features/shipping-label-maker";
+import { ProgressBar } from "../../components";
 
 export default class Wizard extends Component {
   constructor(props) {
@@ -40,19 +41,21 @@ export default class Wizard extends Component {
       onComplete,
       updateContext
     } = this.props;
+    let currentProgress = (this.state.currentStep / steps.length) * 100;
     return (
       <div>
-        This is the Wizard Component!
         <div>
-          ---------------- {(this.state.currentStep / steps.length) * 100}%
-          ----------------
+          <i className="fas fa-magic" />
+          Label Wizard
         </div>
+        <ProgressBar currentProgress={currentProgress} />
         {this.state.currentStep === 0 ? (
           <AddressForm
             wizardContext={wizardContext}
             onAction={this.onAction}
             addressee="sender"
             updateContext={updateContext}
+            currentStep={0}
             title={steps[0]}
           />
         ) : null}
@@ -62,6 +65,7 @@ export default class Wizard extends Component {
             onAction={this.onAction}
             addressee="receiver"
             updateContext={updateContext}
+            currentStep={1}
             title={steps[1]}
           />
         ) : null}
@@ -70,14 +74,16 @@ export default class Wizard extends Component {
             wizardContext={wizardContext}
             onAction={this.onAction}
             updateContext={updateContext}
+            currentStep={2}
             title={steps[2]}
           />
         ) : null}
         {this.state.currentStep === 3 ? (
-          <ShipOption
+          <ShipOptionForm
             wizardContext={wizardContext}
             onAction={this.onAction}
             updateContext={updateContext}
+            currentStep={3}
             title={steps[3]}
           />
         ) : null}
@@ -86,6 +92,7 @@ export default class Wizard extends Component {
             wizardContext={wizardContext}
             onAction={this.onAction}
             updateContext={updateContext}
+            currentStep={4}
             title={steps[4]}
           />
         ) : null}

@@ -36,67 +36,83 @@ export default class AddressForm extends Component {
   }
 
   render() {
-    let { title, onAction, addressee } = this.props;
-    // console.log("this.props.wizardContext: ", this.props.wizardContext);
-    console.log(this.state);
+    let { title, onAction, addressee, currentStep } = this.props;
     return (
       <div>
         <div>
-          <h3>{title}</h3>
+          <div>{`Step ${currentStep + 1}: ${title}`}</div>
         </div>
-        This is the {addressee} address component.
         <form>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            required
-            name="name"
-            value={this.state.name}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="street">Street</label>
-          <input
-            type="text"
-            id="street"
-            required
-            name="street"
-            value={this.state.street}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="city">City</label>
-          <input
-            type="text"
-            id="city"
-            required
-            name="city"
-            value={this.state.city}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="state">State</label>
-          <input
-            type="text"
-            id="state"
-            required
-            name="state"
-            value={this.state.state}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="zip">Zip Code</label>
-          <input
-            type="text"
-            id="zip"
-            required
-            name="zip"
-            value={this.state.zip}
-            onChange={this.handleChange}
-          />
+          <div className="form-row">
+            <div className="col-md-4 mb-3">
+              <label htmlFor="validationDefault01">Full Name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="validationDefault01"
+                name="name"
+                value={this.state.name}
+                onChange={this.handleChange}
+                required
+              />
+            </div>
+            <div className="col-md-8 mb-3">
+              <label htmlFor="validationDefault02">Address</label>
+              <input
+                type="text"
+                className="form-control"
+                id="validationDefault02"
+                name="street"
+                value={this.state.street}
+                onChange={this.handleChange}
+                required
+              />
+            </div>
+          </div>
+          <div className="form-row">
+            <div className="col-md-5 mb-3">
+              <label htmlFor="validationDefault03">City</label>
+              <input
+                type="text"
+                className="form-control"
+                id="validationDefault03"
+                name="city"
+                value={this.state.city}
+                onChange={this.handleChange}
+                required
+              />
+            </div>
+            <div className="col-md-4 mb-3">
+              <label htmlFor="validationDefault04">State</label>
+              <input
+                type="text"
+                className="form-control"
+                id="validationDefault04"
+                name="state"
+                value={this.state.state}
+                onChange={this.handleChange}
+                required
+              />
+            </div>
+            <div className="col-md-3 mb-3">
+              <label htmlFor="validationDefault05">Zip</label>
+              <input
+                type="text"
+                className="form-control"
+                id="validationDefault05"
+                name="zip"
+                value={this.state.zip}
+                onChange={this.handleChange}
+                required
+              />
+            </div>
+          </div>
+          {addressee === "sender" ? (
+            <StepNavBtns onAction={onAction} currentStep={0} />
+          ) : (
+            <StepNavBtns onAction={onAction} currentStep={1} />
+          )}
         </form>
-        {addressee === "sender" ? (
-          <StepNavBtns onAction={onAction} currentStep={0} />
-        ) : (
-          <StepNavBtns onAction={onAction} currentStep={1} />
-        )}
       </div>
     );
   }

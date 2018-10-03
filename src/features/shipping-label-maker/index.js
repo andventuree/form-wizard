@@ -5,5 +5,5 @@
 export { default as ShippingLabelMaker } from "./shipping-label-maker";
 export { default as AddressForm } from "./address-form";
 export { default as WeightForm } from "./weight-form";
-export { default as ShipOption } from "./ship-option";
+export { default as ShipOptionForm } from "./ship-option-form";
 export { default as ConfirmSummary } from "./confirm-summary";

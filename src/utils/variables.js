@@ -20,6 +20,26 @@ export let defaultWizardContext = {
   shippingOption: 1 //defaults to ground shipping
 };
 
+export let popluatedWizardContext = {
+  //for Testing
+  from: {
+    name: "John Smith",
+    street: "131 Dartmouth St",
+    city: "Boston",
+    state: "MA",
+    zip: "02116"
+  },
+  to: {
+    name: "Linda Jackson",
+    street: "40 Fulton St",
+    city: "New York",
+    state: "NY",
+    zip: "10038"
+  },
+  weight: 2,
+  shippingOption: 1
+};
+
 // Used for navigation between steps
 // Used in all step components
 export const WizardAction = {

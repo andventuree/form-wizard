@@ -1,18 +1,21 @@
 import React, { Component } from "react";
 import { Wizard } from "../../core/components/wizard";
-import { defaultWizardContext } from "../../utils/variables";
+import {
+  defaultWizardContext,
+  popluatedWizardContext //for testing
+} from "../../utils/variables";
 
 export default class ShippingLabelMaker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      wizardContext: defaultWizardContext,
+      wizardContext: popluatedWizardContext || defaultWizardContext,
       steps: [
-        "Sender's Address",
-        "Receiver's Address",
-        "Package Weight",
-        "Shipping Option",
-        "Confirmation"
+        "Input Sender's Details",
+        "Input Receiver's Details",
+        "Input Package Weight",
+        "Select Shipping Option",
+        "Review Details For Confirmation"
       ]
     };
     this.onComplete = this.onComplete.bind(this);
@@ -54,10 +57,16 @@ export default class ShippingLabelMaker extends Component {
   render() {
     console.log("this.state.wizardContext: ", this.state.wizardContext);
     return (
-      <div>
-        This is the ShippingLabelMaker component. Could put some routing here
-        when we're adding Auth.
+      <div className="container">
+        <div className="jumbotron">
+          <h1 className="display-4">Welcome!</h1>
+          <p className="lead">
+            This is a simple Shipping Label Maker where you can plug in your
+            shipping information and our Label Wizard will handle the rest.
+          </p>
+        </div>
         <Wizard
+          className="container"
           header={this.header}
           steps={this.state.steps}
           wizardContext={this.state.wizardContext}
@@ -68,3 +77,11 @@ export default class ShippingLabelMaker extends Component {
     );
   }
 }
+
+// <hr className="my-4" />
+// <a className="btn btn-primary btn-lg" href="#" role="button">
+//   Get Started
+// </a>
+// <a className="btn btn-primary btn-lg" href="#" role="button">
+//   See Completed Label
+// </a>

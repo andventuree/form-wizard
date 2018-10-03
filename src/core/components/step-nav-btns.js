@@ -4,11 +4,17 @@ const StepNavBtns = ({ onAction, currentStep }) => {
   return (
     <div>
       {currentStep === 0 ? null : (
-        <button onClick={() => onAction("prev")}>Prev</button>
+        <button className="btn btn-warning" onClick={() => onAction("prev")}>
+          Prev
+        </button>
       )}
 
       {currentStep === 4 ? null : (
-        <button onClick={() => onAction("next")} type="submit">
+        <button
+          className="btn btn-warning"
+          onClick={() => onAction("next")}
+          type="submit"
+        >
           Next
         </button>
       )}
