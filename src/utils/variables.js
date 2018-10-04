@@ -20,7 +20,7 @@ export let defaultWizardContext = {
   shippingOption: 1 //defaults to ground shipping
 };
 
-export let popluatedWizardContext = {
+export let populatedWizardContext = {
   //for Testing
   from: {
     name: "John Smith",

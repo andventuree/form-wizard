@@ -21,35 +21,32 @@ export default class ConfirmSummary extends Component {
   }
 
   render() {
-    let { title, onAction, wizardContext, currentStep } = this.props;
+    let { title, onAction, wizardContext } = this.props;
     return (
-      <div>
-        <div>
-          <div>{`Step ${currentStep + 1}: ${title}`}</div>
-        </div>
-        <div className="row">
-          <AddressBlock details={wizardContext.from} direction="Send From" />
-          <AddressBlock details={wizardContext.to} direction="Deliver To" />
-        </div>
-        <div className="row">
-          <div className="col-md-8 col-sm-0" />
-          <div className="col-md-2 col-sm-9">Weight: </div>
-          <div className="col-md-2 col-sm-3">
-            {wizardContext.weight}
-            lbs
+      <div className="wizard--step">
+        <div className="wizard--step-header">{title}</div>
+        <div className="wizard--step-form">
+          <div className="row">
+            <AddressBlock details={wizardContext.from} direction="Send From" />
+            <AddressBlock details={wizardContext.to} direction="Deliver To" />
           </div>
-        </div>
-        <div className="row">
-          <div className="col-md-8 col-sm-0" />
-          <div className="col-md-2 col-sm-9">Method: </div>
-          <div className="col-md-2 col-sm-3">
-            {wizardContext.shippingOption === 1 ? "Ground" : "Priority"}
+          <div className="row">
+            <div className="col-md-2 col-sm-2">Weight: </div>
+            <div className="col-md-4 col-sm-10">
+              {wizardContext.weight}
+              lbs
+            </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-md-8 col-sm-0" />
-          <div className="col-md-2 col-sm-9">Cost:</div>
-          <div className="col-md-2 col-sm-3">${this.state.shippingCost}</div>
+          <div className="row">
+            <div className="col-md-2 col-sm-2">Method: </div>
+            <div className="col-md-4 col-sm-10">
+              {wizardContext.shippingOption === 1 ? "Ground" : "Priority"}
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-2 col-sm-2">Cost:</div>
+            <div className="col-md-4 col-sm-10">${this.state.shippingCost}</div>
+          </div>
         </div>
         <StepNavBtns onAction={onAction} currentStep={4} />
       </div>

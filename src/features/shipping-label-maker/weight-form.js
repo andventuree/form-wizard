@@ -15,26 +15,26 @@ export default class WeightForm extends Component {
   };
 
   render() {
-    let { title, onAction, wizardContext, currentStep } = this.props;
+    let { title, onAction, wizardContext } = this.props;
     return (
-      <div>
-        <div>{`Step ${currentStep + 1}: ${title}`}</div>
-        <form>
+      <div className="wizard--step">
+        <div className="wizard--step-header">{title}</div>
+        <form className="wizard--step-form">
           <div>
             <label htmlFor="weight">
-              Pounds
-              <input
-                type="number"
-                name="weight"
-                id="weight"
-                min="1"
-                max="200"
-                onChange={this.handleChange}
-                value={wizardContext.weight}
-                required
-              />
-              (lbs)
+              <span className="wizard--step-2-spacing">Pounds</span>
             </label>
+            <input
+              type="number"
+              className="form-control col-md-2"
+              name="weight"
+              id="weight"
+              min="1"
+              max="200"
+              onChange={this.handleChange}
+              value={wizardContext.weight}
+              required
+            />
           </div>
         </form>
         <StepNavBtns onAction={onAction} currentStep={2} />

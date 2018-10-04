@@ -15,13 +15,11 @@ export default class ShipOptionForm extends Component {
   };
 
   render() {
-    let { title, onAction, currentStep } = this.props;
+    let { title, onAction } = this.props;
     return (
-      <div>
-        <div>
-          <div>{`Step ${currentStep + 1}: ${title}`}</div>
-        </div>
-        <form>
+      <div className="wizard--step">
+        <div className="wizard--step-header">{title}</div>
+        <form className="wizard--step-form">
           <div className="form-check">
             <input
               className="form-check-input"

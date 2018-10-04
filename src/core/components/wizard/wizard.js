@@ -18,35 +18,27 @@ export default class Wizard extends Component {
   }
 
   onAction(action) {
-    // The steps will instruct the wizard to move forward or backwards, or end the wizard.
+    // The steps will instruct the wizard to move forward or backwards,
+    // or end the wizard.
     let { currentStep } = this.state;
     if (action === "prev" && currentStep > 0) {
       this.setState({ currentStep: currentStep - 1 });
     } else if (action === "next" && currentStep < this.props.steps.length - 1) {
       this.setState({ currentStep: currentStep + 1 });
-    } else if (
-      action === "end" &&
-      currentStep !== this.props.steps.length - 1
-    ) {
-      //What does it mean to end the wizard????
+    } else if (action === "end" && currentStep === 4) {
+      this.props.onComplete();
       this.setState({ currentStep: this.props.steps.length - 1 });
     }
   }
 
   render() {
-    let {
-      header,
-      steps,
-      wizardContext,
-      onComplete,
-      updateContext
-    } = this.props;
+    let { header, steps, wizardContext, updateContext } = this.props;
     let currentProgress = (this.state.currentStep / steps.length) * 100;
     return (
-      <div>
-        <div>
-          <i className="fas fa-magic" />
-          Label Wizard
+      <div className="container wizard">
+        <div className="wizard--header">
+          <i className="fas fa-magic wizard--header-icon" />
+          <span className="wizard--header-text">Label Wizard</span>
         </div>
         <ProgressBar currentProgress={currentProgress} />
         {this.state.currentStep === 0 ? (
@@ -55,8 +47,8 @@ export default class Wizard extends Component {
             onAction={this.onAction}
             addressee="sender"
             updateContext={updateContext}
-            currentStep={0}
-            title={steps[0]}
+            title={header(this.state.currentStep)}
+            className="wizard--step wizard--step-01"
           />
         ) : null}
         {this.state.currentStep === 1 ? (
@@ -65,8 +57,8 @@ export default class Wizard extends Component {
             onAction={this.onAction}
             addressee="receiver"
             updateContext={updateContext}
-            currentStep={1}
-            title={steps[1]}
+            title={header(this.state.currentStep)}
+            className="wizard--step wizard--step-01"
           />
         ) : null}
         {this.state.currentStep === 2 ? (
@@ -74,8 +66,8 @@ export default class Wizard extends Component {
             wizardContext={wizardContext}
             onAction={this.onAction}
             updateContext={updateContext}
-            currentStep={2}
-            title={steps[2]}
+            title={header(this.state.currentStep)}
+            className="wizard--step wizard--step-2"
           />
         ) : null}
         {this.state.currentStep === 3 ? (
@@ -83,8 +75,8 @@ export default class Wizard extends Component {
             wizardContext={wizardContext}
             onAction={this.onAction}
             updateContext={updateContext}
-            currentStep={3}
-            title={steps[3]}
+            title={header(this.state.currentStep)}
+            className="wizard--step wizard--step-3"
           />
         ) : null}
         {this.state.currentStep === 4 ? (
@@ -92,8 +84,8 @@ export default class Wizard extends Component {
             wizardContext={wizardContext}
             onAction={this.onAction}
             updateContext={updateContext}
-            currentStep={4}
-            title={steps[4]}
+            title={header(this.state.currentStep)}
+            className="wizard--step wizard--step-4"
           />
         ) : null}
       </div>

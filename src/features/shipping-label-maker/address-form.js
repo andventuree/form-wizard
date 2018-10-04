@@ -36,13 +36,11 @@ export default class AddressForm extends Component {
   }
 
   render() {
-    let { title, onAction, addressee, currentStep } = this.props;
+    let { title, onAction, addressee } = this.props;
     return (
-      <div>
-        <div>
-          <div>{`Step ${currentStep + 1}: ${title}`}</div>
-        </div>
-        <form>
+      <div className="wizard--step">
+        <div className="wizard--step-header">{title}</div>
+        <form className="wizard--step-form">
           <div className="form-row">
             <div className="col-md-4 mb-3">
               <label htmlFor="validationDefault01">Full Name</label>
@@ -107,12 +105,12 @@ export default class AddressForm extends Component {
               />
             </div>
           </div>
-          {addressee === "sender" ? (
-            <StepNavBtns onAction={onAction} currentStep={0} />
-          ) : (
-            <StepNavBtns onAction={onAction} currentStep={1} />
-          )}
         </form>
+        {addressee === "sender" ? (
+          <StepNavBtns onAction={onAction} currentStep={0} />
+        ) : (
+          <StepNavBtns onAction={onAction} currentStep={1} />
+        )}
       </div>
     );
   }

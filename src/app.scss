@@ -1,0 +1,76 @@
+// Variables
+$color-gray: darken(#e9ecef, 60%);
+$color-gold: #ffc107;
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  // background-color: #dbc199;
+  // background-image: url("../public/img/photo-1524769490-6d12a683d9ee-Stephane-Yaich.jpeg");
+}
+
+.welcome {
+  & > button {
+    margin-right: 1rem;
+  }
+}
+
+.wizard {
+  border: 1px solid silver;
+  padding: 1rem 2rem;
+  box-shadow: 0.5rem 0.5rem 0.5rem rgba(black, 0.3);
+  border-radius: 3px;
+  color: $color-gray;
+  &--header {
+    margin-bottom: 0.5rem;
+    transition: all 0.5s ease-in-out;
+    color: rgba(black, 0.7);
+    &-icon {
+      font-size: 2rem;
+      padding-right: 1rem;
+    }
+    &-text {
+      font-size: 2rem;
+    }
+    &:hover {
+      color: $color-gold;
+      text-shadow: 0.1rem 0.1rem 2rem rgba($color-gold, 0.3);
+    }
+  }
+
+  &--progress {
+    margin-bottom: 0.5rem;
+    border: 1px solid silver;
+    background: transparent;
+    border-radius: 50px;
+  }
+  &--step {
+    margin: 1rem 0;
+    &-header {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    &-form {
+      min-height: 215px;
+      // height: 200px;
+    }
+
+    &-01 {
+    }
+    &-2 {
+    }
+    &-3 {
+    }
+    &-4 {
+    }
+  }
+  &--buttons {
+    &-prev {
+      margin-right: 1rem;
+    }
+  }
+}

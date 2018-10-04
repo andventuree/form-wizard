@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const AddressBlock = ({ details, direction }) => {
   return (
     <div className="col-md-6">
-      {direction}
+      <div>{direction}</div>
       <div className="row">
         <div className="col-md-3 col-sm-3">Name:</div>
         <div className="col-md-9 col-sm-9">{details.name}</div>

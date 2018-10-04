@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./app.css";
+import "./app.scss";
 import { ShippingLabelMaker } from "./features/shipping-label-maker";
 
 class App extends Component {
