@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { StepNavBtns, AddressBlock } from "../../core/components";
+import {
+  StepNavBtns,
+  AddressBlock,
+  ShipMethodBlock,
+  WeightBlock
+} from "../../core/components";
 import { shippingCost, shippingRate } from "../../utils";
 
 export default class ConfirmSummary extends Component {
@@ -31,21 +36,18 @@ export default class ConfirmSummary extends Component {
             <AddressBlock details={wizardContext.to} direction="Deliver To" />
           </div>
           <div className="row">
-            <div className="col-md-2 col-sm-2">Weight: </div>
-            <div className="col-md-4 col-sm-10">
-              {wizardContext.weight}
-              lbs
-            </div>
+            <ShipMethodBlock shippingOption={wizardContext.shippingOption} />
+            <WeightBlock weight={wizardContext.weight} />
           </div>
-          <div className="row">
-            <div className="col-md-2 col-sm-2">Method: </div>
-            <div className="col-md-4 col-sm-10">
-              {wizardContext.shippingOption === 1 ? "Ground" : "Priority"}
+          <div className="row wizard--step-cost">
+            <div className="col-md-6">
+              <div className="row">
+                <div className="col-md-3 col-sm-3">Cost:</div>
+                <div className="col-md-9 col-sm-9">
+                  ${this.state.shippingCost}
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-md-2 col-sm-2">Cost:</div>
-            <div className="col-md-4 col-sm-10">${this.state.shippingCost}</div>
           </div>
         </div>
         <StepNavBtns onAction={onAction} currentStep={4} />

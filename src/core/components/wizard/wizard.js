@@ -33,9 +33,9 @@ export default class Wizard extends Component {
 
   render() {
     let { header, steps, wizardContext, updateContext } = this.props;
-    let currentProgress = (this.state.currentStep / steps.length) * 100;
+    let currentProgress = ((this.state.currentStep + 1) / steps.length) * 100;
     return (
-      <div className="container wizard">
+      <div className="container wizard--container">
         <div className="wizard--header">
           <i className="fas fa-magic wizard--header-icon" />
           <span className="wizard--header-text">Label Wizard</span>
@@ -48,7 +48,6 @@ export default class Wizard extends Component {
             addressee="sender"
             updateContext={updateContext}
             title={header(this.state.currentStep)}
-            className="wizard--step wizard--step-01"
           />
         ) : null}
         {this.state.currentStep === 1 ? (
@@ -58,7 +57,6 @@ export default class Wizard extends Component {
             addressee="receiver"
             updateContext={updateContext}
             title={header(this.state.currentStep)}
-            className="wizard--step wizard--step-01"
           />
         ) : null}
         {this.state.currentStep === 2 ? (
@@ -67,7 +65,6 @@ export default class Wizard extends Component {
             onAction={this.onAction}
             updateContext={updateContext}
             title={header(this.state.currentStep)}
-            className="wizard--step wizard--step-2"
           />
         ) : null}
         {this.state.currentStep === 3 ? (
@@ -76,7 +73,6 @@ export default class Wizard extends Component {
             onAction={this.onAction}
             updateContext={updateContext}
             title={header(this.state.currentStep)}
-            className="wizard--step wizard--step-3"
           />
         ) : null}
         {this.state.currentStep === 4 ? (
@@ -85,7 +81,6 @@ export default class Wizard extends Component {
             onAction={this.onAction}
             updateContext={updateContext}
             title={header(this.state.currentStep)}
-            className="wizard--step wizard--step-4"
           />
         ) : null}
       </div>

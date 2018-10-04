@@ -5,7 +5,7 @@ const ProgressBar = ({ currentProgress }) => {
   return (
     <div className="progress wizard--progress">
       <div
-        className="progress-bar progress-bar-animated progress-bar-striped bg-warning"
+        className="progress-bar progress-bar-animated progress-bar-striped bg-info"
         role="progressbar"
         aria-valuemin="0"
         aria-valuemax="100"
