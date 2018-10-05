@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const WelcomePrompt = ({ handleClick }) => {
   return (
@@ -13,6 +14,10 @@ const WelcomePrompt = ({ handleClick }) => {
       </button>
     </div>
   );
+};
+
+WelcomePrompt.propTypes = {
+  handleClick: PropTypes.func.isRequired
 };
 
 export default WelcomePrompt;

@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import "./app.scss";
-import {
-  ShippingLabelMaker,
-  WelcomePrompt
-} from "./features/shipping-label-maker";
+import { WelcomePrompt } from "./core/components";
+import { ShippingLabelMaker } from "./features/shipping-label-maker";
 
 class App extends Component {
   constructor() {

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const StepNavBtns = ({ onAction, currentStep }) => {
   return (
@@ -28,6 +29,11 @@ const StepNavBtns = ({ onAction, currentStep }) => {
       ) : null}
     </div>
   );
+};
+
+StepNavBtns.propTypes = {
+  onAction: PropTypes.func.isRequired,
+  currentStep: PropTypes.number.isRequired
 };
 
 export default StepNavBtns;

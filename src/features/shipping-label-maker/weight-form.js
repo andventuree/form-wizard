@@ -26,7 +26,7 @@ export default class WeightForm extends Component {
             </label>
             <input
               type="number"
-              className="form-control col-md-2"
+              className="form-control col-md-1"
               name="weight"
               id="weight"
               min="1"

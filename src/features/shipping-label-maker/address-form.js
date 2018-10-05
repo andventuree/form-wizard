@@ -12,24 +12,22 @@ export default class AddressForm extends Component {
 
   componentDidMount() {
     let { wizardContext, addressee } = this.props;
-    if (addressee === "sender") {
-      this.setState(wizardContext.to);
-    } else {
-      this.setState(wizardContext.from);
-    }
+    addressee === "sender"
+      ? this.setState(wizardContext.from)
+      : this.setState(wizardContext.to);
   }
 
-  handleChange = e => {
+  handleChange(e) {
     let { wizardContext, addressee, updateContext } = this.props;
     if (addressee === "sender") {
-      wizardContext["to"][e.target.name] = e.target.value;
+      wizardContext["from"][e.target.name] = e.target.value;
       this.setState(wizardContext.to);
     } else {
-      wizardContext["from"][e.target.name] = e.target.value;
+      wizardContext["to"][e.target.name] = e.target.value;
       this.setState(wizardContext.from);
     }
     updateContext(wizardContext);
-  };
+  }
 
   handleSubmit(e) {
     e.preventDefault();

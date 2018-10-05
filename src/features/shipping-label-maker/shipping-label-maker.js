@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Wizard } from "../../core/components/wizard";
-import { Label } from "../../core/components";
-import { NavBar } from "../shipping-label-maker";
+import { Label, NavBar } from "../../core/components";
 import {
   defaultWizardContext,
   populatedWizardContext //for testing
@@ -13,7 +12,7 @@ export default class ShippingLabelMaker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      wizardContext: populatedWizardContext || defaultWizardContext,
+      wizardContext: defaultWizardContext || populatedWizardContext,
       steps: [
         "Input Sender's Details",
         "Input Receiver's Details",
@@ -21,10 +20,8 @@ export default class ShippingLabelMaker extends Component {
         "Select Shipping Option",
         "Review Details For Confirmation"
       ],
-      // showWizard: true,
-      // labelCompleted: false
-      showWizard: false,
-      labelCompleted: true
+      showWizard: true,
+      labelCompleted: false
     };
     this.onComplete = this.onComplete.bind(this);
     this.header = this.header.bind(this);
@@ -38,7 +35,8 @@ export default class ShippingLabelMaker extends Component {
   }
 
   onComplete() {
-    //Since step has reached the end, construct the wizardContext
+    // Since step has reached the end,
+    // construct the wizardContext and present label
     this.setState({ labelCompleted: true, showWizard: false });
   }
 

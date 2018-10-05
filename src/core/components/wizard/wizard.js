@@ -8,6 +8,8 @@ import {
 } from "../../../features/shipping-label-maker";
 import { ProgressBar } from "../../components";
 
+// The heart of the app is a “Wizard” component whose primary responsibility
+// is to receive a series of steps from its parent and sequencing through them.
 export default class Wizard extends Component {
   constructor(props) {
     super(props);
@@ -18,12 +20,13 @@ export default class Wizard extends Component {
   }
 
   onAction(action) {
-    // The steps will instruct the wizard to move forward or backwards,
-    // or end the wizard.
+    // The step components will instruct the wizard to move
+    // forward or backwards, or end the wizard.
     let { currentStep } = this.state;
+    let lastStep = this.props.steps.length - 1;
     if (action === "prev" && currentStep > 0) {
       this.setState({ currentStep: currentStep - 1 });
-    } else if (action === "next" && currentStep < this.props.steps.length - 1) {
+    } else if (action === "next" && currentStep < lastStep) {
       this.setState({ currentStep: currentStep + 1 });
     } else if (action === "end" && currentStep === 4) {
       this.props.onComplete();
@@ -34,6 +37,7 @@ export default class Wizard extends Component {
   render() {
     let { header, steps, wizardContext, updateContext } = this.props;
     let currentProgress = ((this.state.currentStep + 1) / steps.length) * 100;
+
     return (
       <div className="container wizard--container">
         <div className="wizard--header">
@@ -43,18 +47,18 @@ export default class Wizard extends Component {
         <ProgressBar currentProgress={currentProgress} />
         {this.state.currentStep === 0 ? (
           <AddressForm
+            addressee="sender"
             wizardContext={wizardContext}
             onAction={this.onAction}
-            addressee="sender"
             updateContext={updateContext}
             title={header(this.state.currentStep)}
           />
         ) : null}
         {this.state.currentStep === 1 ? (
           <AddressForm
+            addressee="receiver"
             wizardContext={wizardContext}
             onAction={this.onAction}
-            addressee="receiver"
             updateContext={updateContext}
             title={header(this.state.currentStep)}
           />
