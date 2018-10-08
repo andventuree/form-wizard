@@ -13,8 +13,8 @@ export default class ShippingLabelMaker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // wizardContext: defaultWizardContext, // for production
-      wizardContext: populatedWizardContext, // for tesing
+      wizardContext: defaultWizardContext, // for production
+      // wizardContext: populatedWizardContext, // for tesing
       steps: [
         "Input Sender's Details",
         "Input Receiver's Details",
