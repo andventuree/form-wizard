@@ -3,7 +3,7 @@ import "./app.scss";
 import { WelcomePrompt } from "./core/components";
 import { AuthForm, ShippingLabelMaker } from "./features/shipping-label-maker";
 import { validateInput } from "../src/utils";
-import { withAuth } from "./HOC";
+import { withAuth } from "../src/core/components/higher-order-comp";
 
 class App extends Component {
   constructor() {
