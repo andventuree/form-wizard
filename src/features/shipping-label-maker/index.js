@@ -7,3 +7,4 @@ export { default as AddressForm } from "./address-form";
 export { default as WeightForm } from "./weight-form";
 export { default as ShipOptionForm } from "./ship-option-form";
 export { default as ConfirmSummary } from "./confirm-summary";
+export { default as AuthForm } from "./auth-form.js";

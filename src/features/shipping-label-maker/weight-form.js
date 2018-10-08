@@ -17,10 +17,13 @@ export default class WeightForm extends Component {
   }
 
   handleChange(e) {
+    //Fancy regex validations can go here
     this.setState({ [e.target.name]: e.target.value });
   }
 
   handleSubmit() {
+    //This method provides flexibility to do any
+    //final validation before form is submitted (as necessary)
     let { wizardContext, updateContext, onAction } = this.props;
     if (!isNaN(parseInt(this.state.weight))) {
       wizardContext.weight = this.state.weight;

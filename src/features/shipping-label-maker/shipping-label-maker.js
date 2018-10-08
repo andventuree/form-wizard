@@ -8,14 +8,13 @@ import {
   populatedWizardContext //for testing
 } from "../../utils/variables";
 
-// Highest parent element
 // ShippingLabelMaker -> Wizard -> Each Step
 export default class ShippingLabelMaker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // wizardContext: defaultWizardContext, // for production
-      wizardContext: populatedWizardContext, // for tesing
+      wizardContext: defaultWizardContext, // for production
+      // wizardContext: populatedWizardContext, // for tesing
       steps: [
         "Input Sender's Details",
         "Input Receiver's Details",
@@ -38,18 +37,17 @@ export default class ShippingLabelMaker extends Component {
   }
 
   onComplete() {
-    // Since step has reached the end,
-    // construct the wizardContext and present label
+    // Present label when steps are done
     this.setState({ labelCompleted: true, showWizard: false });
   }
 
   updateContext(newContextDetails) {
     // Method to allow steps to setState on ShippingLabelMaker Component
-    console.log(newContextDetails);
     this.setState({ wizardContext: newContextDetails });
   }
 
   handleClick() {
+    // Toggles between Label and Wizard button to see respective views
     this.setState({ showWizard: !this.state.showWizard });
   }
 

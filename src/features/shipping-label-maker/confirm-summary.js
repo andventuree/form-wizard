@@ -27,6 +27,8 @@ export default class ConfirmSummary extends Component {
   }
 
   handleSubmit() {
+    //This method provides flexibility to do any
+    //final validation before form is submitted (as necessary)
     if (validateInput(this.props.wizardContext)) {
       this.props.onAction("end");
     }

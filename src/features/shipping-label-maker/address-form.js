@@ -25,8 +25,7 @@ export default class AddressForm extends Component {
       : this.setState(wizardContext.to);
   }
 
-  //With handleChange, any current changes are added onto state AND
-  //not immediately reflected in wizardContext w/o submitting form
+  //Changes are not reflected immediately on wizardContext, need to submit
   handleChange(e) {
     //this is a spot where you can put custom validators
     this.setState({ [e.target.name]: e.target.value });

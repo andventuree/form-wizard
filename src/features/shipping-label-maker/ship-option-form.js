@@ -17,6 +17,7 @@ export default class ShipOptionForm extends Component {
   }
 
   handleChange(e) {
+    //Fancy regex validations can go here
     this.setState({ [e.target.name]: e.target.value });
   }
 

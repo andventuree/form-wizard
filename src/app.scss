@@ -17,19 +17,27 @@ $border-radius-standard: 0.3rem;
 
 // Utilities
 .center {
-  text-align: center;
+  text-align: center !important;
 }
 
 .underline {
-  text-decoration: underline;
+  text-decoration: underline !important;
 }
 
 .font-large {
-  font-size: 2rem;
+  font-size: 2rem !important;
 }
 
 .right {
-  text-align: right;
+  text-align: right !important;
+}
+
+.center-element {
+  margin: 0 auto !important;
+}
+
+.margin-bottom-small {
+  margin-bottom: 1rem !important;
 }
 
 // App
@@ -44,6 +52,14 @@ $border-radius-standard: 0.3rem;
 
 .jumbotron {
   box-shadow: $box-shadow-standard;
+}
+
+.auth {
+  &__container {
+    @include container-settings;
+    max-width: 500px;
+    margin: 0 auto;
+  }
 }
 
 .navbar {
