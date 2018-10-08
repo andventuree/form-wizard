@@ -147,13 +147,3 @@ AddressForm.propTypes = {
   addressee: PropTypes.string.isRequired,
   updateContext: PropTypes.func.isRequired
 };
-
-// <input
-// type="text"
-// className="form-control"
-// id="state"
-// name="state"
-// value={this.state.state}
-// onChange={this.handleChange}
-// required
-// />
