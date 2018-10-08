@@ -8,3 +8,4 @@ export { default as ShipMethodBlock } from "./ship-method-block";
 export { default as WeightBlock } from "./weight-block";
 export { default as WelcomePrompt } from "./welcome-prompt";
 export { default as NavBar } from "./navbar";
+export { default as UsStatesDropdown } from "./us-states-dropdown";

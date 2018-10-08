@@ -17,7 +17,8 @@ export default class WeightForm extends Component {
   }
 
   handleChange(e) {
-    //Fancy regex validations can go here
+    //Type validations can go here
+    if (parseInt(e.target.value) > 1000) return;
     this.setState({ [e.target.name]: e.target.value });
   }
 
@@ -48,7 +49,7 @@ export default class WeightForm extends Component {
               name="weight"
               id="weight"
               min="1"
-              max="200"
+              max="1000"
               onChange={this.handleChange}
               value={this.state.weight}
               required

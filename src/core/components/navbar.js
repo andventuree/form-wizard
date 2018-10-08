@@ -8,7 +8,7 @@ const NavBar = ({ handleClick, labelCompleted, showWizard }) => {
       <div className="navbar__button">
         {labelCompleted ? (
           <button className="btn btn-light" onClick={handleClick}>
-            {showWizard ? "Label" : "Wizard"}
+            {showWizard ? "View Label" : "Back to Wizard"}
           </button>
         ) : null}
       </div>

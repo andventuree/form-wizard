@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { StepNavBtns } from "../../core/components";
+import { StepNavBtns, UsStatesDropdown } from "../../core/components";
 import { validateInput } from "../../utils";
 
 export default class AddressForm extends Component {
@@ -25,15 +25,17 @@ export default class AddressForm extends Component {
       : this.setState(wizardContext.to);
   }
 
-  //Changes are not reflected immediately on wizardContext, need to submit
+  //Changes are not reflected immediately on wizardContext
+  //Changes are only reflected on the state of this component
   handleChange(e) {
-    //this is a spot where you can put custom validators
+    //Type validations can go here
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  //Submit answers to reflect changes on wizardContext
   handleSubmit() {
     let { wizardContext, addressee, updateContext, onAction } = this.props;
-    //1a) Validate input
+    //1a) Validate input [Additional regex validations can go here (as necessary)]
     if (validateInput(this.state)) {
       //2) Construct payload to pass back to ShippingLabelMaker (parent)
       if (addressee === "sender") wizardContext.from = this.state;
@@ -94,22 +96,24 @@ export default class AddressForm extends Component {
               </div>
               <div className="col-md-4 mb-3">
                 <label htmlFor="state">State</label>
-                <input
-                  type="text"
+                <select
                   className="form-control"
                   id="state"
                   name="state"
                   value={this.state.state}
                   onChange={this.handleChange}
                   required
-                />
+                >
+                  <option disabled>Choose...</option>
+                  <UsStatesDropdown />
+                </select>
               </div>
               <div className="col-md-3 mb-3">
-                <label htmlFor="validationDefault05">Zip</label>
+                <label htmlFor="zip">Zip</label>
                 <input
-                  type="text"
+                  type="number"
                   className="form-control"
-                  id="validationDefault05"
+                  id="zip"
                   name="zip"
                   value={this.state.zip}
                   onChange={this.handleChange}
@@ -143,3 +147,13 @@ AddressForm.propTypes = {
   addressee: PropTypes.string.isRequired,
   updateContext: PropTypes.func.isRequired
 };
+
+// <input
+// type="text"
+// className="form-control"
+// id="state"
+// name="state"
+// value={this.state.state}
+// onChange={this.handleChange}
+// required
+// />

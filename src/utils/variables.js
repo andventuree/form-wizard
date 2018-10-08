@@ -57,3 +57,10 @@ export const ShippingOption = {
 // Used in step 5 (ConfirmSummary)
 // Used in conjunction with shippingCost fn
 export const shippingRate = 0.4;
+
+// Regex
+
+// Validate a ZIP code (U.S. postal code), allowing both formats:
+// five-digit 12345
+// nine-digit (called ZIP+4) 12345-6789
+export const zipValidator = new RegExp("^[0-9]{5}(?:-[0-9]{4})?$");
