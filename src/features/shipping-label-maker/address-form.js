@@ -52,69 +52,71 @@ export default class AddressForm extends Component {
     return (
       <div className="wizard--step">
         <div className="wizard--step-header">{title}</div>
-        <form className="wizard--step-form">
-          <div className="form-row">
-            <div className="col-md-4 mb-3">
-              <label htmlFor="full-name">Full Name</label>
-              <input
-                type="text"
-                className="form-control"
-                id="full-name"
-                name="name"
-                value={this.state.name}
-                onChange={this.handleChange}
-                required
-              />
+        <form>
+          <div className="wizard--step-form">
+            <div className="form-row">
+              <div className="col-md-4 mb-3">
+                <label htmlFor="full-name">Full Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="full-name"
+                  name="name"
+                  value={this.state.name}
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
+              <div className="col-md-8 mb-3">
+                <label htmlFor="Street">Street</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="Street"
+                  name="street"
+                  value={this.state.street}
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
             </div>
-            <div className="col-md-8 mb-3">
-              <label htmlFor="Street">Street</label>
-              <input
-                type="text"
-                className="form-control"
-                id="Street"
-                name="street"
-                value={this.state.street}
-                onChange={this.handleChange}
-                required
-              />
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="col-md-5 mb-3">
-              <label htmlFor="city">City</label>
-              <input
-                type="text"
-                className="form-control"
-                id="city"
-                name="city"
-                value={this.state.city}
-                onChange={this.handleChange}
-                required
-              />
-            </div>
-            <div className="col-md-4 mb-3">
-              <label htmlFor="state">State</label>
-              <input
-                type="text"
-                className="form-control"
-                id="state"
-                name="state"
-                value={this.state.state}
-                onChange={this.handleChange}
-                required
-              />
-            </div>
-            <div className="col-md-3 mb-3">
-              <label htmlFor="validationDefault05">Zip</label>
-              <input
-                type="text"
-                className="form-control"
-                id="validationDefault05"
-                name="zip"
-                value={this.state.zip}
-                onChange={this.handleChange}
-                required
-              />
+            <div className="form-row">
+              <div className="col-md-5 mb-3">
+                <label htmlFor="city">City</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="city"
+                  name="city"
+                  value={this.state.city}
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
+              <div className="col-md-4 mb-3">
+                <label htmlFor="state">State</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="state"
+                  name="state"
+                  value={this.state.state}
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
+              <div className="col-md-3 mb-3">
+                <label htmlFor="validationDefault05">Zip</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="validationDefault05"
+                  name="zip"
+                  value={this.state.zip}
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
             </div>
           </div>
           {addressee === "sender" ? (

@@ -1,6 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+const combineAddressRow = addressee => {
+  return `${addressee.city} ${addressee.state}, ${addressee.zip}`;
+};
+
 const Label = ({ wizardContext }) => {
   let sender = wizardContext.from;
   let receiver = wizardContext.to;
@@ -16,7 +20,7 @@ const Label = ({ wizardContext }) => {
             <div>SHIP FROM:</div>
             <div>{sender.name}</div>
             <div>{sender.street}</div>
-            <div>{`${sender.city} ${sender.state}, ${sender.zip}`}</div>
+            <div>{combineAddressRow(sender)}</div>
           </div>
           <div className="col-md-4 col-sm-4 col-xs-4 center font-large right">
             {wizardContext.weight} LBS
@@ -29,7 +33,7 @@ const Label = ({ wizardContext }) => {
           <div className="col-md-4 col-sm-4 col-xs-4 center">
             <div>{receiver.name}</div>
             <div>{receiver.street}</div>
-            <div>{`${receiver.city} ${receiver.state}, ${receiver.zip}`}</div>
+            <div>{combineAddressRow(receiver)}</div>
           </div>
           <div className="col-md-4 col-sm-3 col-xs-4" />
         </div>
@@ -38,9 +42,7 @@ const Label = ({ wizardContext }) => {
           <div className="col-md-4 ">
             {wizardContext.shippingOption === "1" ? "GROUND" : "PRIORITY"}
           </div>
-          <div className="col-md-8 right">{`${receiver.city} ${
-            receiver.state
-          }, ${receiver.zip}`}</div>
+          <div className="col-md-8 right">{combineAddressRow(receiver)}</div>
         </div>
         <div className="row" />
       </div>

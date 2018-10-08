@@ -37,21 +37,26 @@ export default class ConfirmSummary extends Component {
     return (
       <div className="wizard--step">
         <div className="wizard--step-header">{title}</div>
-        <form className="wizard--step-form">
-          <div className="row">
-            <AddressBlock details={wizardContext.from} direction="Send From" />
-            <AddressBlock details={wizardContext.to} direction="Deliver To" />
-          </div>
-          <div className="row">
-            <ShipMethodBlock shippingOption={wizardContext.shippingOption} />
-            <WeightBlock weight={wizardContext.weight} />
-          </div>
-          <div className="row wizard--step-cost">
-            <div className="col-md-6">
-              <div className="row">
-                <div className="col-md-3 col-sm-3">Cost:</div>
-                <div className="col-md-9 col-sm-9">
-                  ${this.state.shippingCost}
+        <form>
+          <div className="wizard--step-form">
+            <div className="row">
+              <AddressBlock
+                details={wizardContext.from}
+                direction="Send From"
+              />
+              <AddressBlock details={wizardContext.to} direction="Deliver To" />
+            </div>
+            <div className="row">
+              <ShipMethodBlock shippingOption={wizardContext.shippingOption} />
+              <WeightBlock weight={wizardContext.weight} />
+            </div>
+            <div className="row wizard--step-cost">
+              <div className="col-md-6">
+                <div className="row">
+                  <div className="col-md-3 col-sm-3">Cost:</div>
+                  <div className="col-md-9 col-sm-9">
+                    ${this.state.shippingCost}
+                  </div>
                 </div>
               </div>
             </div>

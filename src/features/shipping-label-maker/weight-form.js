@@ -34,8 +34,8 @@ export default class WeightForm extends Component {
     return (
       <div className="wizard--step">
         <div className="wizard--step-header">{title}</div>
-        <form className="wizard--step-form">
-          <div>
+        <form>
+          <div className="wizard--step-form">
             <label htmlFor="weight">
               <span className="wizard--step-2-spacing">Pounds (Lbs)</span>
             </label>

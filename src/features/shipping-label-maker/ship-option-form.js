@@ -36,34 +36,36 @@ export default class ShipOptionForm extends Component {
     return (
       <div className="wizard--step">
         <div className="wizard--step-header">{title}</div>
-        <form className="wizard--step-form">
-          <div className="form-check">
-            <input
-              id="ground"
-              className="form-check-input"
-              type="radio"
-              name="shippingOption"
-              onChange={this.handleChange}
-              checked={this.state.shippingOption === "1"}
-              value={"1"}
-            />
-            <label className="form-check-label" htmlFor="ground">
-              Ground
-            </label>
-          </div>
-          <div className="form-check">
-            <input
-              id="priority"
-              className="form-check-input"
-              type="radio"
-              name="shippingOption"
-              onChange={this.handleChange}
-              checked={this.state.shippingOption === "2"}
-              value={"2"}
-            />
-            <label className="form-check-label" htmlFor="priority">
-              Priority
-            </label>
+        <form>
+          <div className="wizard--step-form">
+            <div className="form-check">
+              <input
+                id="ground"
+                className="form-check-input"
+                type="radio"
+                name="shippingOption"
+                onChange={this.handleChange}
+                checked={this.state.shippingOption === "1"}
+                value={"1"}
+              />
+              <label className="form-check-label" htmlFor="ground">
+                Ground
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                id="priority"
+                className="form-check-input"
+                type="radio"
+                name="shippingOption"
+                onChange={this.handleChange}
+                checked={this.state.shippingOption === "2"}
+                value={"2"}
+              />
+              <label className="form-check-label" htmlFor="priority">
+                Priority
+              </label>
+            </div>
           </div>
           <StepNavBtns
             currentStep={3}
