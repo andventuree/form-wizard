@@ -37,7 +37,7 @@ export default class ConfirmSummary extends Component {
     return (
       <div className="wizard--step">
         <div className="wizard--step-header">{title}</div>
-        <div className="wizard--step-form">
+        <form className="wizard--step-form">
           <div className="row">
             <AddressBlock details={wizardContext.from} direction="Send From" />
             <AddressBlock details={wizardContext.to} direction="Deliver To" />
@@ -56,12 +56,12 @@ export default class ConfirmSummary extends Component {
               </div>
             </div>
           </div>
-        </div>
-        <StepNavBtns
-          onAction={onAction}
-          currentStep={4}
-          handleSubmit={this.handleSubmit}
-        />
+          <StepNavBtns
+            onAction={onAction}
+            currentStep={4}
+            handleSubmit={this.handleSubmit}
+          />
+        </form>
       </div>
     );
   }

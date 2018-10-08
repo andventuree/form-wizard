@@ -65,12 +65,12 @@ export default class ShipOptionForm extends Component {
               Priority
             </label>
           </div>
+          <StepNavBtns
+            currentStep={3}
+            onAction={onAction}
+            handleSubmit={this.handleSubmit}
+          />
         </form>
-        <StepNavBtns
-          currentStep={3}
-          onAction={onAction}
-          handleSubmit={this.handleSubmit}
-        />
       </div>
     );
   }

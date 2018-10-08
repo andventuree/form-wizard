@@ -36,7 +36,7 @@ const Label = ({ wizardContext }) => {
         <hr />
         <div className="row label--option">
           <div className="col-md-4 ">
-            {wizardContext.shippingOption === 1 ? "GROUND" : "PRIORITY"}
+            {wizardContext.shippingOption === "1" ? "GROUND" : "PRIORITY"}
           </div>
           <div className="col-md-8 right">{`${receiver.city} ${
             receiver.state
