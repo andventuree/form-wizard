@@ -3,16 +3,18 @@ import PropTypes from "prop-types";
 
 const NavBar = ({ handleClick, labelCompleted, showWizard }) => {
   return (
-    <div className="navbar">
-      <div className="navbar__logo">Shipping Label Maker</div>
-      <div className="navbar__button">
-        {labelCompleted ? (
-          <button className="btn btn-light" onClick={handleClick}>
-            {showWizard ? "View Label" : "Back to Wizard"}
-          </button>
-        ) : null}
-      </div>
-    </div>
+    <header>
+      <nav className="navbar">
+        <div className="navbar__logo">Shipping Label Maker</div>
+        <div className="navbar__button">
+          {labelCompleted ? (
+            <button className="btn btn-light" onClick={handleClick}>
+              {showWizard ? "View Label" : "Back to Wizard"}
+            </button>
+          ) : null}
+        </div>
+      </nav>
+    </header>
   );
 };
 

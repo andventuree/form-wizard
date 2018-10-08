@@ -37,7 +37,7 @@ export default class ConfirmSummary extends Component {
   render() {
     let { title, onAction, wizardContext } = this.props;
     return (
-      <div className="wizard__step">
+      <section className="wizard__step">
         <div className="wizard__step-header">{title}</div>
         <form>
           <div className="wizard__step-form">
@@ -69,7 +69,7 @@ export default class ConfirmSummary extends Component {
             handleSubmit={this.handleSubmit}
           />
         </form>
-      </div>
+      </section>
     );
   }
 }

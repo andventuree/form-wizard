@@ -35,7 +35,7 @@ export default class ShipOptionForm extends Component {
   render() {
     let { title, onAction } = this.props;
     return (
-      <div className="wizard__step">
+      <section className="wizard__step">
         <div className="wizard__step-header">{title}</div>
         <form>
           <div className="wizard__step-form">
@@ -74,7 +74,7 @@ export default class ShipOptionForm extends Component {
             handleSubmit={this.handleSubmit}
           />
         </form>
-      </div>
+      </section>
     );
   }
 }
