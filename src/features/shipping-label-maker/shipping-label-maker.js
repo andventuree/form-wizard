@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { Wizard } from "../../core/components/wizard";
 import { Label, NavBar } from "../../core/components";
 import {
+  // eslint-disable-next-line
   defaultWizardContext,
+  // eslint-disable-next-line
   populatedWizardContext //for testing
 } from "../../utils/variables";
 
@@ -12,7 +14,8 @@ export default class ShippingLabelMaker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      wizardContext: defaultWizardContext || populatedWizardContext,
+      wizardContext: defaultWizardContext, // for production
+      // wizardContext: populatedWizardContext, // for tesing
       steps: [
         "Input Sender's Details",
         "Input Receiver's Details",
@@ -42,6 +45,7 @@ export default class ShippingLabelMaker extends Component {
 
   updateContext(newContextDetails) {
     // Method to allow steps to setState on ShippingLabelMaker Component
+    console.log(newContextDetails);
     this.setState({ wizardContext: newContextDetails });
   }
 

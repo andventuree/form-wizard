@@ -5,39 +5,60 @@ import { StepNavBtns } from "../../core/components";
 export default class WeightForm extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      weight: 1
+    };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange = e => {
-    let { wizardContext, updateContext } = this.props;
-    wizardContext[e.target.name] = e.target.value;
+  componentDidMount() {
+    this.setState({ weight: this.props.wizardContext.weight });
+  }
+
+  handleChange(e) {
+    let newWeight = parseInt(e.target.value);
+    if (isNaN(newWeight)) newWeight = "";
+    this.setState({ [e.target.name]: newWeight });
+  }
+
+  handleSubmit() {
+    //This method provides flexibility to do any
+    //final validation before form is submitted (as necessary)
+    let { wizardContext, updateContext, onAction } = this.props;
+    wizardContext.weight = this.state.weight;
     updateContext(wizardContext);
-  };
+    if (this.state.weight !== "") onAction("next");
+  }
 
   render() {
-    let { title, onAction, wizardContext } = this.props;
+    let { title, onAction } = this.props;
     return (
       <div className="wizard--step">
         <div className="wizard--step-header">{title}</div>
         <form className="wizard--step-form">
           <div>
             <label htmlFor="weight">
-              <span className="wizard--step-2-spacing">Pounds</span>
+              <span className="wizard--step-2-spacing">Pounds (Lbs)</span>
             </label>
             <input
               type="number"
-              className="form-control col-md-1"
+              className="form-control col-md-2"
               name="weight"
               id="weight"
               min="1"
               max="200"
               onChange={this.handleChange}
-              value={wizardContext.weight}
+              value={this.state.weight}
               required
             />
           </div>
+          <StepNavBtns
+            currentStep={2}
+            onAction={onAction}
+            handleSubmit={this.handleSubmit}
+          />
         </form>
-        <StepNavBtns onAction={onAction} currentStep={2} />
       </div>
     );
   }
@@ -48,5 +69,3 @@ WeightForm.propTypes = {
   onAction: PropTypes.func.isRequired,
   updateContext: PropTypes.func.isRequired
 };
-
-// <label htmlFor="weight">Weight</label>

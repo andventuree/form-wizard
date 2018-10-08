@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const StepNavBtns = ({ onAction, currentStep }) => {
+const StepNavBtns = ({ onAction, currentStep, handleSubmit }) => {
   return (
     <div>
       {currentStep === 0 ? null : (
@@ -9,31 +9,35 @@ const StepNavBtns = ({ onAction, currentStep }) => {
           className="btn btn-warning wizard--buttons-prev"
           onClick={() => onAction("prev")}
         >
-          Prev
+          &#10094; Prev
         </button>
       )}
 
-      {currentStep === 4 ? null : (
-        <button
-          className="btn btn-warning"
-          onClick={() => onAction("next")}
-          // type="submit"
-        >
-          Next
-        </button>
-      )}
       {currentStep === 4 ? (
-        <button className="btn btn-secondary" onClick={() => onAction("end")}>
+        <button
+          className="btn btn-secondary"
+          onClick={() => handleSubmit()}
+          type="submit"
+        >
           Generate Label
         </button>
-      ) : null}
+      ) : (
+        <button
+          className="btn btn-warning"
+          onClick={() => handleSubmit()}
+          type="submit"
+        >
+          Next &#10095;
+        </button>
+      )}
     </div>
   );
 };
 
 StepNavBtns.propTypes = {
   onAction: PropTypes.func.isRequired,
-  currentStep: PropTypes.number.isRequired
+  currentStep: PropTypes.number.isRequired,
+  handleSubmit: PropTypes.func.isRequired
 };
 
 export default StepNavBtns;

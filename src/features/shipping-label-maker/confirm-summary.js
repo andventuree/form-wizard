@@ -6,7 +6,7 @@ import {
   ShipMethodBlock,
   WeightBlock
 } from "../../core/components";
-import { shippingCost, shippingRate } from "../../utils";
+import { shippingCost, shippingRate, validateInput } from "../../utils";
 
 export default class ConfirmSummary extends Component {
   constructor(props) {
@@ -14,6 +14,7 @@ export default class ConfirmSummary extends Component {
     this.state = {
       shippingCost: 0
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -23,6 +24,12 @@ export default class ConfirmSummary extends Component {
       this.props.wizardContext.shippingOption
     );
     this.setState({ shippingCost: totalCost });
+  }
+
+  handleSubmit() {
+    if (validateInput(this.props.wizardContext)) {
+      this.props.onAction("end");
+    }
   }
 
   render() {
@@ -50,7 +57,11 @@ export default class ConfirmSummary extends Component {
             </div>
           </div>
         </div>
-        <StepNavBtns onAction={onAction} currentStep={4} />
+        <StepNavBtns
+          onAction={onAction}
+          currentStep={4}
+          handleSubmit={this.handleSubmit}
+        />
       </div>
     );
   }

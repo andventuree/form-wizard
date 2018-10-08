@@ -1,15 +1,23 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { StepNavBtns } from "../../core/components";
+import { validateInput } from "../../utils";
 
 export default class AddressForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      name: "",
+      street: "",
+      city: "",
+      state: "",
+      zip: ""
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  //Every time a form component is mounted, the previous answers are loaded
   componentDidMount() {
     let { wizardContext, addressee } = this.props;
     addressee === "sender"
@@ -17,20 +25,26 @@ export default class AddressForm extends Component {
       : this.setState(wizardContext.to);
   }
 
+  //With handleChange, any current changes are added onto state AND
+  //not immediately reflected in wizardContext w/o submitting form
   handleChange(e) {
-    let { wizardContext, addressee, updateContext } = this.props;
-    if (addressee === "sender") {
-      wizardContext["from"][e.target.name] = e.target.value;
-      this.setState(wizardContext.to);
-    } else {
-      wizardContext["to"][e.target.name] = e.target.value;
-      this.setState(wizardContext.from);
-    }
-    updateContext(wizardContext);
+    //this is a spot where you can put custom validators
+    this.setState({ [e.target.name]: e.target.value });
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSubmit() {
+    let { wizardContext, addressee, updateContext, onAction } = this.props;
+    //1a) Validate input
+    if (validateInput(this.state)) {
+      //2) Construct payload to pass back to ShippingLabelMaker (parent)
+      if (addressee === "sender") wizardContext.from = this.state;
+      else wizardContext.to = this.state;
+      //3) Save new answers to parent's state
+      updateContext(wizardContext);
+      //4) Then, allow onAction to navigate away
+      onAction("next");
+    }
+    //1b) If input is invalid, browser validation messages appear
   }
 
   render() {
@@ -41,11 +55,11 @@ export default class AddressForm extends Component {
         <form className="wizard--step-form">
           <div className="form-row">
             <div className="col-md-4 mb-3">
-              <label htmlFor="validationDefault01">Full Name</label>
+              <label htmlFor="full-name">Full Name</label>
               <input
                 type="text"
                 className="form-control"
-                id="validationDefault01"
+                id="full-name"
                 name="name"
                 value={this.state.name}
                 onChange={this.handleChange}
@@ -53,11 +67,11 @@ export default class AddressForm extends Component {
               />
             </div>
             <div className="col-md-8 mb-3">
-              <label htmlFor="validationDefault02">Address</label>
+              <label htmlFor="Street">Street</label>
               <input
                 type="text"
                 className="form-control"
-                id="validationDefault02"
+                id="Street"
                 name="street"
                 value={this.state.street}
                 onChange={this.handleChange}
@@ -67,11 +81,11 @@ export default class AddressForm extends Component {
           </div>
           <div className="form-row">
             <div className="col-md-5 mb-3">
-              <label htmlFor="validationDefault03">City</label>
+              <label htmlFor="city">City</label>
               <input
                 type="text"
                 className="form-control"
-                id="validationDefault03"
+                id="city"
                 name="city"
                 value={this.state.city}
                 onChange={this.handleChange}
@@ -79,11 +93,11 @@ export default class AddressForm extends Component {
               />
             </div>
             <div className="col-md-4 mb-3">
-              <label htmlFor="validationDefault04">State</label>
+              <label htmlFor="state">State</label>
               <input
                 type="text"
                 className="form-control"
-                id="validationDefault04"
+                id="state"
                 name="state"
                 value={this.state.state}
                 onChange={this.handleChange}
@@ -103,12 +117,20 @@ export default class AddressForm extends Component {
               />
             </div>
           </div>
+          {addressee === "sender" ? (
+            <StepNavBtns
+              currentStep={0}
+              onAction={onAction}
+              handleSubmit={this.handleSubmit}
+            />
+          ) : (
+            <StepNavBtns
+              currentStep={1}
+              onAction={onAction}
+              handleSubmit={this.handleSubmit}
+            />
+          )}
         </form>
-        {addressee === "sender" ? (
-          <StepNavBtns onAction={onAction} currentStep={0} />
-        ) : (
-          <StepNavBtns onAction={onAction} currentStep={1} />
-        )}
       </div>
     );
   }

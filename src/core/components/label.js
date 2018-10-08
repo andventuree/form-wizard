@@ -35,10 +35,10 @@ const Label = ({ wizardContext }) => {
         </div>
         <hr />
         <div className="row label--option">
-          <div className="col-md-6 ">
+          <div className="col-md-4 ">
             {wizardContext.shippingOption === 1 ? "GROUND" : "PRIORITY"}
           </div>
-          <div className="col-md-6 right">{`${receiver.city} ${
+          <div className="col-md-8 right">{`${receiver.city} ${
             receiver.state
           }, ${receiver.zip}`}</div>
         </div>

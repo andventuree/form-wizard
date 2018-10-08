@@ -5,14 +5,29 @@ import { StepNavBtns } from "../../core/components";
 export default class ShipOptionForm extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      shippingOption: 1
+    };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange = e => {
-    let { wizardContext, updateContext } = this.props;
-    wizardContext[e.target.name] = e.target.value;
+  componentDidMount() {
+    this.setState({ shippingOption: this.props.wizardContext.shippingOption });
+  }
+
+  handleChange(e) {
+    this.setState({ [e.target.name]: parseInt(e.target.value) });
+  }
+
+  handleSubmit() {
+    //This method provides flexibility to do any
+    //final validation before form is submitted (as necessary)
+    let { wizardContext, updateContext, onAction } = this.props;
+    wizardContext.shippingOption = this.state.shippingOption;
     updateContext(wizardContext);
-  };
+    if (!isNaN(this.state.shippingOption)) onAction("next");
+  }
 
   render() {
     let { title, onAction } = this.props;
@@ -22,12 +37,13 @@ export default class ShipOptionForm extends Component {
         <form className="wizard--step-form">
           <div className="form-check">
             <input
+              id="ground"
               className="form-check-input"
               type="radio"
-              name="shipOption"
-              id="ground"
+              name="shippingOption"
+              onChange={this.handleChange}
+              checked={this.state.shippingOption === 1}
               value={1}
-              defaultChecked
             />
             <label className="form-check-label" htmlFor="ground">
               Ground
@@ -35,10 +51,12 @@ export default class ShipOptionForm extends Component {
           </div>
           <div className="form-check">
             <input
+              id="priority"
               className="form-check-input"
               type="radio"
-              name="shipOption"
-              id="priority"
+              name="shippingOption"
+              onChange={this.handleChange}
+              checked={this.state.shippingOption === 2}
               value={2}
             />
             <label className="form-check-label" htmlFor="priority">
@@ -46,7 +64,11 @@ export default class ShipOptionForm extends Component {
             </label>
           </div>
         </form>
-        <StepNavBtns onAction={onAction} currentStep={3} />
+        <StepNavBtns
+          currentStep={3}
+          onAction={onAction}
+          handleSubmit={this.handleSubmit}
+        />
       </div>
     );
   }

@@ -16,7 +16,7 @@ export let defaultWizardContext = {
     state: "",
     zip: ""
   },
-  weight: 1,
+  weight: 1, //defaults to 1 lb
   shippingOption: 1 //defaults to ground shipping
 };
 
@@ -36,7 +36,7 @@ export let populatedWizardContext = {
     state: "NY",
     zip: "10038"
   },
-  weight: 2,
+  weight: 20,
   shippingOption: 1
 };
 
