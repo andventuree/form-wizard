@@ -37,10 +37,10 @@ export default class ConfirmSummary extends Component {
   render() {
     let { title, onAction, wizardContext } = this.props;
     return (
-      <div className="wizard--step">
-        <div className="wizard--step-header">{title}</div>
+      <div className="wizard__step">
+        <div className="wizard__step-header">{title}</div>
         <form>
-          <div className="wizard--step-form">
+          <div className="wizard__step-form">
             <div className="row">
               <AddressBlock
                 details={wizardContext.from}
@@ -52,7 +52,7 @@ export default class ConfirmSummary extends Component {
               <ShipMethodBlock shippingOption={wizardContext.shippingOption} />
               <WeightBlock weight={wizardContext.weight} />
             </div>
-            <div className="row wizard--step-cost">
+            <div className="row wizard__step-cost">
               <div className="col-md-6">
                 <div className="row">
                   <div className="col-md-3 col-sm-3">Cost:</div>

@@ -10,11 +10,11 @@ const Label = ({ wizardContext }) => {
   let receiver = wizardContext.to;
 
   return (
-    <div className="container label--container">
-      <div className="label--header">
+    <div className="container label__container">
+      <div className="label__header">
         Label is ready. Print and paste label on your package.
       </div>
-      <div className="label--sticker">
+      <div className="label__sticker">
         <div className="row">
           <div className="col-md-8 col-sm-8 col-xs-8">
             <div>SHIP FROM:</div>
@@ -38,7 +38,7 @@ const Label = ({ wizardContext }) => {
           <div className="col-md-4 col-sm-3 col-xs-4" />
         </div>
         <hr />
-        <div className="row label--option">
+        <div className="row label__option">
           <div className="col-md-4 ">
             {wizardContext.shippingOption === "1" ? "GROUND" : "PRIORITY"}
           </div>

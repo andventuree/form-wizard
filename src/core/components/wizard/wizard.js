@@ -39,10 +39,10 @@ export default class Wizard extends Component {
     let currentProgress = ((this.state.currentStep + 1) / steps.length) * 100;
 
     return (
-      <div className="container wizard--container">
-        <div className="wizard--header">
-          <i className="fas fa-magic wizard--header-icon" />
-          <span className="wizard--header-text">Label Wizard</span>
+      <div className="container wizard__container">
+        <div className="wizard__header">
+          <i className="fas fa-magic wizard__header-icon" />
+          <span className="wizard__header-text">Label Wizard</span>
         </div>
         <ProgressBar currentProgress={currentProgress} />
         {this.state.currentStep === 0 ? (

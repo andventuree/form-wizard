@@ -35,12 +35,12 @@ export default class WeightForm extends Component {
   render() {
     let { title, onAction } = this.props;
     return (
-      <div className="wizard--step">
-        <div className="wizard--step-header">{title}</div>
+      <div className="wizard__step">
+        <div className="wizard__step-header">{title}</div>
         <form>
-          <div className="wizard--step-form">
+          <div className="wizard__step-form">
             <label htmlFor="weight">
-              <span className="wizard--step-2-spacing">Pounds (Lbs)</span>
+              <span>Pounds (Lbs)</span>
             </label>
             <input
               type="number"

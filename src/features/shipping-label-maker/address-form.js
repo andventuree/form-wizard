@@ -49,10 +49,10 @@ export default class AddressForm extends Component {
   render() {
     let { title, onAction, addressee } = this.props;
     return (
-      <div className="wizard--step">
-        <div className="wizard--step-header">{title}</div>
+      <div className="wizard__step">
+        <div className="wizard__step-header">{title}</div>
         <form>
-          <div className="wizard--step-form">
+          <div className="wizard__step-form">
             <div className="form-row">
               <div className="col-md-4 mb-3">
                 <label htmlFor="full-name">Full Name</label>

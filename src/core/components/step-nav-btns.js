@@ -6,7 +6,7 @@ const StepNavBtns = ({ onAction, currentStep, handleSubmit }) => {
     <div>
       {currentStep === 0 ? null : (
         <button
-          className="btn btn-warning wizard--buttons-prev"
+          className="btn btn-warning wizard__buttons-prev"
           onClick={() => onAction("prev")}
         >
           &#10094; Prev
