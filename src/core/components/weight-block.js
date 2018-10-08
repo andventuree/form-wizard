@@ -13,7 +13,7 @@ const WeightBlock = ({ weight }) => {
 };
 
 WeightBlock.propTypes = {
-  weight: PropTypes.number.isRequired
+  weight: PropTypes.string.isRequired
 };
 
 export default WeightBlock;

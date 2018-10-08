@@ -6,7 +6,7 @@ export default class WeightForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      weight: 1
+      weight: "1"
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,18 +17,16 @@ export default class WeightForm extends Component {
   }
 
   handleChange(e) {
-    let newWeight = parseInt(e.target.value);
-    if (isNaN(newWeight)) newWeight = "";
-    this.setState({ [e.target.name]: newWeight });
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   handleSubmit() {
-    //This method provides flexibility to do any
-    //final validation before form is submitted (as necessary)
     let { wizardContext, updateContext, onAction } = this.props;
-    wizardContext.weight = this.state.weight;
-    updateContext(wizardContext);
-    if (this.state.weight !== "") onAction("next");
+    if (!isNaN(parseInt(this.state.weight))) {
+      wizardContext.weight = this.state.weight;
+      updateContext(wizardContext);
+      onAction("next");
+    }
   }
 
   render() {

@@ -6,7 +6,7 @@ export default class ShipOptionForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      shippingOption: 1
+      shippingOption: "1"
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,16 +17,18 @@ export default class ShipOptionForm extends Component {
   }
 
   handleChange(e) {
-    this.setState({ [e.target.name]: parseInt(e.target.value) });
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   handleSubmit() {
     //This method provides flexibility to do any
     //final validation before form is submitted (as necessary)
     let { wizardContext, updateContext, onAction } = this.props;
-    wizardContext.shippingOption = this.state.shippingOption;
-    updateContext(wizardContext);
-    if (!isNaN(this.state.shippingOption)) onAction("next");
+    if (!isNaN(parseInt(this.state.shippingOption))) {
+      wizardContext.shippingOption = this.state.shippingOption;
+      updateContext(wizardContext);
+      onAction("next");
+    }
   }
 
   render() {
@@ -42,8 +44,8 @@ export default class ShipOptionForm extends Component {
               type="radio"
               name="shippingOption"
               onChange={this.handleChange}
-              checked={this.state.shippingOption === 1}
-              value={1}
+              checked={this.state.shippingOption === "1"}
+              value={"1"}
             />
             <label className="form-check-label" htmlFor="ground">
               Ground
@@ -56,8 +58,8 @@ export default class ShipOptionForm extends Component {
               type="radio"
               name="shippingOption"
               onChange={this.handleChange}
-              checked={this.state.shippingOption === 2}
-              value={2}
+              checked={this.state.shippingOption === "2"}
+              value={"2"}
             />
             <label className="form-check-label" htmlFor="priority">
               Priority

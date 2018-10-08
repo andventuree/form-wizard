@@ -15,7 +15,7 @@ const ShipMethodBlock = ({ shippingOption }) => {
 };
 
 ShipMethodBlock.propTypes = {
-  shippingOption: PropTypes.number.isRequired
+  shippingOption: PropTypes.string.isRequired
 };
 
 export default ShipMethodBlock;
