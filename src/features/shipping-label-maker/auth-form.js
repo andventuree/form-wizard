@@ -21,6 +21,7 @@ const AuthForm = ({ username, password, handleChange, handleSubmit }) => {
             name="username"
             onChange={handleChange}
             value={username}
+            required
           />
         </div>
         <div className="input-group input-group-sm mb-3 ">
@@ -35,6 +36,7 @@ const AuthForm = ({ username, password, handleChange, handleSubmit }) => {
             className="form-control"
             onChange={handleChange}
             value={password}
+            required
           />
         </div>
         <div className="">

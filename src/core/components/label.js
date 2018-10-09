@@ -12,8 +12,15 @@ const Label = ({ wizardContext }) => {
   return (
     <div className="container label__container">
       <div className="label__header">
-        Label is ready. Print and paste label on your package.
+        <button
+          className="btn btn-info margin-right-small"
+          onClick={() => window.print()}
+        >
+          Print
+        </button>
+        Cut out and paste label on your package.
       </div>
+
       <div className="label__sticker">
         <div className="row">
           <div className="col-md-8 col-sm-8 col-xs-8">
