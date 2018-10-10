@@ -28,7 +28,7 @@
 ### Running app locally
 
 1. `npm install` in terminal
-2. Visit http://localhost:3000/ in preferred web browser
+2. `npm start` which will open the app on http://localhost:3000/ in your preferred web browser
 3. To log into app, simply type in anything. As security was not a consideration for this app, there are only validators to check if username and password fields are empty.
 
 ### Room for improvement
@@ -55,3 +55,7 @@
 ### Completed Label
 
 ![Label](/public/img/Label.png)
+
+### Print Prompt
+
+![Print-prompt](/public/img/Print-prompt.png)
