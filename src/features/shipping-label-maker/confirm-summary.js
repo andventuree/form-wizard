@@ -18,7 +18,7 @@ export default class ConfirmSummary extends Component {
   }
 
   componentDidMount() {
-    let totalCost = shippingCost(
+    const totalCost = shippingCost(
       this.props.wizardContext.weight,
       shippingRate,
       this.props.wizardContext.shippingOption
@@ -35,7 +35,7 @@ export default class ConfirmSummary extends Component {
   }
 
   render() {
-    let { title, onAction, wizardContext } = this.props;
+    const { title, onAction, wizardContext } = this.props;
     return (
       <section className="wizard__step">
         <div className="wizard__step-header">{title}</div>

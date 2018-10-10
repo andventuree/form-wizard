@@ -25,7 +25,7 @@ export default class WeightForm extends Component {
   handleSubmit() {
     //This method provides flexibility to do any
     //final validation before form is submitted (as necessary)
-    let { wizardContext, updateContext, onAction } = this.props;
+    const { wizardContext, updateContext, onAction } = this.props;
     if (!isNaN(parseInt(this.state.weight))) {
       wizardContext.weight = this.state.weight;
       updateContext(wizardContext);
@@ -34,7 +34,7 @@ export default class WeightForm extends Component {
   }
 
   render() {
-    let { title, onAction } = this.props;
+    const { title, onAction } = this.props;
     return (
       <section className="wizard__step">
         <div className="wizard__step-header">{title}</div>

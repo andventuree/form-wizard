@@ -9,9 +9,9 @@ export const shippingCost = (weight, shippingRate, shippingOption) => {
 };
 
 export const validateInput = obj => {
-  for (let key in obj) {
+  for (const key in obj) {
     if (typeof obj[key] === "function") {
-      let nestedObj = obj[key];
+      const nestedObj = obj[key];
       validateInput(nestedObj);
     } else if (obj[key] === "") {
       return false;

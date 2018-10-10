@@ -1,7 +1,7 @@
 // Helper variables
 
 // Starting state
-export let defaultWizardContext = {
+export const defaultWizardContext = {
   from: {
     name: "",
     street: "",
@@ -20,7 +20,7 @@ export let defaultWizardContext = {
   shippingOption: "1" //defaults to ground shipping
 };
 
-export let populatedWizardContext = {
+export const populatedWizardContext = {
   //for Testing
   from: {
     name: "John Smith",

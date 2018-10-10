@@ -22,8 +22,8 @@ export default class Wizard extends Component {
   onAction(action) {
     // The step components will instruct the wizard to move
     // forward or backwards, or end the wizard.
-    let { currentStep } = this.state;
-    let lastStep = this.props.steps.length - 1;
+    const { currentStep } = this.state;
+    const lastStep = this.props.steps.length - 1;
     if (action === "prev" && currentStep > 0) {
       this.setState({ currentStep: currentStep - 1 });
     } else if (action === "next" && currentStep < lastStep) {
@@ -35,8 +35,8 @@ export default class Wizard extends Component {
   }
 
   render() {
-    let { header, steps, wizardContext, updateContext } = this.props;
-    let currentProgress = ((this.state.currentStep + 1) / steps.length) * 100;
+    const { header, steps, wizardContext, updateContext } = this.props;
+    const currentProgress = ((this.state.currentStep + 1) / steps.length) * 100;
 
     return (
       <main className="container wizard__container">

@@ -29,14 +29,14 @@ class App extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let { username, password } = this.state;
+    const { username, password } = this.state;
     if (validateInput({ username, password })) {
       this.setState({ isAuthenticated: true });
     }
   }
 
   render() {
-    let ProtectedLabelMaker = withAuth(this.state.isAuthenticated)(
+    const ProtectedLabelMaker = withAuth(this.state.isAuthenticated)(
       ShippingLabelMaker
     );
     return (

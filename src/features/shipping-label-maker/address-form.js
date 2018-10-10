@@ -19,7 +19,7 @@ export default class AddressForm extends Component {
 
   //Every time a form component is mounted, the previous answers are loaded
   componentDidMount() {
-    let { wizardContext, addressee } = this.props;
+    const { wizardContext, addressee } = this.props;
     addressee === "sender"
       ? this.setState(wizardContext.from)
       : this.setState(wizardContext.to);
@@ -34,7 +34,7 @@ export default class AddressForm extends Component {
 
   //Submit answers to reflect changes on wizardContext
   handleSubmit() {
-    let { wizardContext, addressee, updateContext, onAction } = this.props;
+    const { wizardContext, addressee, updateContext, onAction } = this.props;
     //1a) Validate input [Additional regex validations can go here (as necessary)]
     if (validateInput(this.state)) {
       //2) Construct payload to pass back to ShippingLabelMaker (parent)
@@ -49,7 +49,7 @@ export default class AddressForm extends Component {
   }
 
   render() {
-    let { title, onAction, addressee } = this.props;
+    const { title, onAction, addressee } = this.props;
     return (
       <section className="wizard__step">
         <div className="wizard__step-header">{title}</div>

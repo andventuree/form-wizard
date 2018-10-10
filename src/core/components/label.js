@@ -6,8 +6,8 @@ const combineAddressRow = addressee => {
 };
 
 const Label = ({ wizardContext }) => {
-  let sender = wizardContext.from;
-  let receiver = wizardContext.to;
+  const sender = wizardContext.from;
+  const receiver = wizardContext.to;
 
   return (
     <div className="container label__container">

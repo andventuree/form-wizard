@@ -24,7 +24,7 @@ export default class ShipOptionForm extends Component {
   handleSubmit() {
     //This method provides flexibility to do any
     //final validation before form is submitted (as necessary)
-    let { wizardContext, updateContext, onAction } = this.props;
+    const { wizardContext, updateContext, onAction } = this.props;
     if (!isNaN(parseInt(this.state.shippingOption))) {
       wizardContext.shippingOption = this.state.shippingOption;
       updateContext(wizardContext);
@@ -33,7 +33,7 @@ export default class ShipOptionForm extends Component {
   }
 
   render() {
-    let { title, onAction } = this.props;
+    const { title, onAction } = this.props;
     return (
       <section className="wizard__step">
         <div className="wizard__step-header">{title}</div>
