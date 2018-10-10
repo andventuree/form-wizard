@@ -1,4 +1,6 @@
-# Welcome to "Shipping Label Maker" by Andrew Wong
+# **Form Wizard**
+
+![Welcome](/public/img/Welcome.png)
 
 ### Features
 
@@ -8,15 +10,16 @@
 4. Nicely formatted shipping label
 5. Responsive design
 
-## User Stories
+### User Stories
 
 1. A user needs to log in to see the wizard. (Since there's no database, any credentials are deemed satisfactory to get passed this gate)
 2. A user can fill in various details (Sender address, receiver address, weight, desired shipping method)
 3. A user may navigate between stages of the form process by using buttons.
-4. A user go back and edit their answers at any time via navigation buttons (Prev & Next).
+4. A user go back and edit their answers at any time via navigation buttons (Prev & Next). If the user does not like their changes, Prev button can be used to cancel the changes. Next button is used to save new answers.
 5. A user can see a progress bar highlighting percentage of completion.
 6. A user is presented a total cost for shipping the package in a summary page.
 7. A user can toggle between views of the wizard (to go back and edit) and the label (reflecting information put in).
+8. A user can open the print prompt with print button on the completed label view.
 
 ### Technology
 
@@ -39,9 +42,8 @@
 
 ## Screenshots
 
-### Welcome prompt and Auth
+### Auth
 
-![Welcome](/public/img/Welcome.png)
 ![Auth](/public/img/Auth.png)
 
 ### Steps 1 - 5
