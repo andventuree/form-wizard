@@ -1,5 +1,5 @@
 {
-  "name": "shipping-label-wizard",
+  "name": "form-wizard",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
