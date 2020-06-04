@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.2/workbox-sw.js");
 
 importScripts(
-  "/form-wizard/precache-manifest.e63d8e1f1fd712936e6a956a78722368.js"
+  "/form-wizard/3000/index.html/precache-manifest.03fa2a96bf9af447accd420f75dd49be.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/form-wizard/index.html", {
+workbox.routing.registerNavigationRoute("/form-wizard/3000/index.html/index.html", {
   
   blacklist: [/^\/_/,/\/[^/]+\.[^/]+$/],
 });
