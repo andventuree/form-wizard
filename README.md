@@ -2,6 +2,8 @@
 
 ![Welcome](/public/img/Welcome.png)
 
+## > [Deployed Link](http://andventuree.github.io/form-wizard) <
+
 ### Features
 
 1. Simple authentication
@@ -27,12 +29,6 @@
 2. Prop-Types
 3. Bootstrap
 4. Sass
-
-### Running app locally
-
-1. `npm install` in terminal
-2. `npm start` which will open the app on http://localhost:3000/ in your preferred web browser
-3. To log into app, simply type in anything. As security was not a consideration for this app, there are only validators to check if username and password fields are empty.
 
 ### Room for improvement
 
@@ -61,3 +57,21 @@
 ### Print Prompt
 
 ![Print-prompt](/public/img/Print-prompt.png)
+
+### Running app locally
+
+1. `npm install` in terminal
+2. `npm start` which will open the app on http://localhost:3000/ in your preferred web browser
+3. To log into app, simply type in anything. As security was not a consideration for this app, there are only validators to check if username and password fields are empty.
+
+### How to deploy on github pages (again)
+
+1. `npm install --save-dev gh-pages`
+2. Add make these changes from this commit https://github.com/andventuree/form-wizard/commit/564b5421ac53e6235e1dbbd0cef055ea581585c1
+3. `npm run deploy`
+4. Go into this repo's Settings > Options > Github Pages. Have github point to the Github Pages branch to serve.
+5. Deployed link is now: http://andventuree.github.io/form-wizard
+
+Note: If you only see this readme on the deployed linked, its either 
+a) step 4 above was skipped OR
+b) there's some latency on github's end. Check back in several hours. 
